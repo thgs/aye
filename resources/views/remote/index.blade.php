@@ -62,6 +62,41 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .sessionData {
+                background-color:lightgreen;
+                padding: 10px;
+
+                border-radius: 10px;
+            }
+
+            .failed {
+                background-color: plum;
+            }
+
+            .sessionData .sessionHeader {
+                font-weight: 900;
+            }
+
+            .sessionData .sessionBody {
+                font-family: monospace;
+            }
+
+            .sessionData .command {
+                font-weight: 900;
+            }
+
+            .sessionData .returnCode:before {
+                content:'(';
+            }
+            .sessionData .returnCode:after {
+                content:')';
+            }
+            .sessionData .returnCode {
+                font-size: 12px;
+            }
+
+
         </style>
     </head>
     <body>
@@ -81,6 +116,26 @@
                 <div class="title m-b-md">
                     Aye
                 </div>
+
+                @if (session()->has('returnCode'))
+                <div class="sessionData {{ session()->get('returnCode') != 'Ok' ? 'failed' : '' }}">
+                    <div class="sessionHeader">
+                        <span class="command">{{ session()->get('lastCommand') }}</span>
+                        <span class="returnCode">{{ session()->get('returnCode') }}</span>
+                    </div>
+                    <div class="sessionBody">
+                        @if (count(session()->get('output')) > 0)
+                        <pre>
+                        @foreach (session()->get('output') as $line)
+                            {{ $line }}
+                        @endforeach
+                        </pre>
+                        @endif
+                    </div>
+
+
+                </div>
+                @endif
 
                 <div class="links">
                     <a href="{{ route('commands.execute', 'VolumeUp') }}">Vol +</a>
