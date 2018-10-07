@@ -82,6 +82,10 @@
                 font-family: monospace;
             }
 
+            .sessionBody pre {
+                text-align: left;
+            }
+
             .sessionData .command {
                 font-weight: 900;
             }
@@ -144,6 +148,7 @@
                     <a href="{{ route('commands.execute', 'LightDown') }}">Backlight -</a>
                     <a href="{{ route('commands.execute', 'MPVPause') }}">MPV.Pause</a>
                     <a href="{{ route('commands.execute', 'MPVResume') }}">MPV.Resume</a>
+                    <a href="{{ route('commands.execute', 'Dfh') }}">Disk Space</a>                    
                 </div>
             </div>
         </div>
