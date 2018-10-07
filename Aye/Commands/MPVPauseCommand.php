@@ -2,12 +2,7 @@
 
 namespace Aye\Commands;
 
-class MPVPauseCommand extends Command
+class MPVPauseCommand extends BaseCommand
 {
-    public function execute()
-    {
-        $cmd = 'echo \'{ "command": ["set_property", "pause", "yes"] }\' | socat - /tmp/mpvsocket';
-        
-        exec($cmd);
-    }
+    protected $command = 'echo \'{ "command": ["set_property", "pause", "yes"] }\' | socat - /tmp/mpvsocket';
 }

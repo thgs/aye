@@ -2,12 +2,7 @@
 
 namespace Aye\Commands;
 
-class LightUpCommand extends Command
+class LightUpCommand extends BaseCommand
 {
-    public function execute()
-    {
-        $cmd = 'light -A 5';
-        
-        exec($cmd);
-    }
+    protected $command = 'light -A 5';
 }

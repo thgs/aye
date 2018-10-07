@@ -2,12 +2,7 @@
 
 namespace Aye\Commands;
 
-class VolumeDownCommand extends Command
+class VolumeDownCommand extends BaseCommand
 {
-    public function execute()
-    {
-        $cmd = 'pactl set-sink-volume 0 -20%';
-        
-        exec($cmd);
-    }
+    protected $command = 'pactl set-sink-volume 0 -20%';
 }
