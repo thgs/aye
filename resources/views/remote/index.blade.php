@@ -146,8 +146,10 @@
                     <a href="{{ route('commands.execute', 'VolumeDown') }}">Vol -</a>
                     <a href="{{ route('commands.execute', 'LightUp') }}">Backlight +</a>
                     <a href="{{ route('commands.execute', 'LightDown') }}">Backlight -</a>
+                    <a href="{{ route('commands.execute', 'MPVBackward') }}">MPV.Backward(10 sec.)</a>
                     <a href="{{ route('commands.execute', 'MPVPause') }}">MPV.Pause</a>
                     <a href="{{ route('commands.execute', 'MPVResume') }}">MPV.Resume</a>
+                    <a href="{{ route('commands.execute', 'MPVForward') }}">MPV.Forward(10 sec.)</a>
                     <a href="{{ route('commands.execute', 'Dfh') }}">Disk Space</a>                    
                 </div>
             </div>
