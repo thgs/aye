@@ -144,6 +144,7 @@
                 <div class="links">
                     <a href="{{ route('commands.execute', 'VolumeUp') }}">Vol +</a>
                     <a href="{{ route('commands.execute', 'VolumeDown') }}">Vol -</a>
+                    <a href="{{ route('commands.execute', 'Space') }}">Space</a>
                     <a href="{{ route('commands.execute', 'LightUp') }}">Backlight +</a>
                     <a href="{{ route('commands.execute', 'LightDown') }}">Backlight -</a>
                     <a href="{{ route('commands.execute', 'MPVPause') }}">MPV.Pause</a>
