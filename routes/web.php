@@ -17,3 +17,6 @@ Route::get('/execute/{command}', [
     'as'    =>  'commands.execute',
     'uses'  =>  'CommandsController@execute'
 ]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
