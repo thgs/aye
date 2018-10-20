@@ -1,12 +1,15 @@
 <?php
 
-namespace Aye\Commands;
+namespace Aye\Traits;
 
 use Aye\ExitCodes as EX;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-class BaseCommand
+
+trait BasicCommand
 {
-    protected $command;
+    //protected $command;
 
     protected $output;
 
@@ -21,7 +24,7 @@ class BaseCommand
         // extend this to add something to run before execution
     }
 
-    public function execute()
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         // call any code before executing the command
         $this->before();
@@ -70,5 +73,17 @@ class BaseCommand
     public function __toString()
     {
         return $this->name ?: $this->getClassName();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        // This defines a default delegation to the trait execution method
+        // for an Artisan Command. (for now)
+        $this->execute();
     }
 }

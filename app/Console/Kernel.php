@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Symfony\Component\Finder\Finder;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -36,5 +37,13 @@ class Kernel extends ConsoleKernel
     protected function commands()
     {
         require base_path('routes/console.php');
+
+        // load all Aye commands, cannot use load as it namespace starting with App
+        $files = (new Finder)->files()->in(base_path('Aye/Commands'));
+        foreach ($files as $command) {
+            $class = str_replace('.php', '', $command->getBasename());
+
+            $this->commands[] = 'Aye\Commands\\'.$class;
+        }
     }
 }

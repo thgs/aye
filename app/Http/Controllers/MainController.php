@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Aye\CommandsRepository;
-
 use App\Http\Requests;
+use Aye\LaravelCommandsRepo;
 
 class MainController extends Controller
 {
     protected $repo;
 
-    public function __construct(CommandsRepository $repo)
+    public function __construct(LaravelCommandsRepo $repo)
     {
-        // inject our dependencies
         $this->repo = $repo;
     }
     
     public function index()
     {
-        $commands = $this->repo->getCommands();
+        $commands = $this->repo->getRegisteredCommands();
 
         return view('remote.index', ['commands' => $commands]);
     }
