@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+/* there is no need to keep this here and produces an error on composer update
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+*/
