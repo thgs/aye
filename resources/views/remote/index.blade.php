@@ -88,6 +88,16 @@
     </div>
     @endif
 
+    
+{{--
+    @php(dd($commands))
+
+    @foreach ($commands as $c)
+    <div class="f-item">
+        <a href="{{ route('commands.execute', $c->getClassName()) }}">{{ $c->getName() }}</a>
+    </div>
+    @endforeach
+--}}
     <div class="f-item">
         <a href="{{ route('commands.execute', 'VolumeUp') }}">Vol +</a>
     </div>
