@@ -14,6 +14,7 @@ class BaseCommand
 
     protected $flash_output_to_session = true;
 
+    protected $name;
 
     public function before()
     {
@@ -56,8 +57,18 @@ class BaseCommand
         session()->flash('lastCommand', $this->getClassName() );
     }
 
-    protected function getClassName() 
+    public function getClassName() 
     {
         return str_replace('Command', '', (new \ReflectionClass($this))->getShortName());
+    }
+
+    public function getName()
+    {
+        return $this->__toString();
+    }
+
+    public function __toString()
+    {
+        return $this->name ?: $this->getClassName();
     }
 }
