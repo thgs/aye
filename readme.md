@@ -6,13 +6,21 @@ Well this is my small remote control. Ever wanted to change the volume on your l
 
 ### How to use
 
-To start `artisan serve` I use this in zsh, so it starts in correct interface
+You can use the custom `artisan servelan` command to start the built-in server, which tries to find the LAN IP and reads from .env if settings are there (see below SERVE_HOST, SERVE_PORT). Note, that calling `artisan servelan` with `--host` or `--port` will override any .env setting and pass them to `artisan serve`.
+
+Otherwise, to start `artisan serve` I use this in zsh, so it starts in correct interface
 
 ```zsh
 aye() {
     ~/artisan serve --host=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/')
 }
 ```
+
+and also you can just start it manually by running `artisan serve`.
+
+### Configuration
+
+To use the internal `artisan servelan` command, two new settings used: SERVE_HOST and SERVE_PORT. These are set in .env file as per example file. You can use special string `linuxfind` on SERVE_HOST so Aye tries to find the LAN IP by using `ip addr`.
 
 ### Creating commands
 
