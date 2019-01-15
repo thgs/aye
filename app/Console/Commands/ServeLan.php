@@ -57,17 +57,14 @@ class ServeLan extends Command
     protected function findHostAndPort()
     {
         // we try to find the LAN IP address here (backtick notation). This would work on linux
-        // todo: make a windows version or possibly a Mac OS X version (maybe still works)
         if ($this->option('host')) {
             $host = $this->option('host');
         } else {
             if (env('SERVE_HOST') == 'linuxfind') {
                 $host = trim(`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`);
-            }
-            elseif (env('SERVE_HOST') == 'darwinfind') {
+            } elseif (env('SERVE_HOST') == 'darwinfind') {
                 $host = trim(`ifconfig | awk '/broadcast/ { print $2 }'`);
-            }
-            else {
+            } else {
                 $host = env('SERVE_HOST');
             }
         }
