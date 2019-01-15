@@ -63,7 +63,11 @@ class ServeLan extends Command
         } else {
             if (env('SERVE_HOST') == 'linuxfind') {
                 $host = trim(`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`);
-            } else {
+            }
+            elseif (env('SERVE_HOST') == 'darwinfind') {
+                $host = trim(`ifconfig | awk '/broadcast/ { print $2 }'`);
+            }
+            else {
                 $host = env('SERVE_HOST');
             }
         }
