@@ -75,6 +75,11 @@ class ServeLan extends Command
             $port = env('SERVE_PORT', 8000);
         }
 
+        while (!$host) {
+            $this->error('Could not find IP address');
+            $host = $this->ask('Enter IP address manually');
+        }
+
         // return what we found
         return [$host, $port];
     }
